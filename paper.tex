@@ -1,0 +1,59 @@
+\documentclass[]{tufte-book}
+%packages
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{graphicx}
+\usepackage{epstopdf}
+\usepackage{empheq}
+\usepackage{soul,color}
+\usepackage{subfigure}
+
+%macros and renew commands
+\renewcommand{\bibsection}{\textbf{\refname}}
+\newcommand*\widefbox[1]{\fbox{\hspace{2em}#1\hspace{2em}}}
+\newcommand*{\tensor}[1]{\bar{\bar{#1}}}
+% Prints an epigraph and speaker in sans serif, all-caps type.
+\newcommand{\openepigraph}[2]{%
+  %\sffamily\fontsize{14}{16}\selectfont
+  \begin{fullwidth}
+  \sffamily\large
+  \begin{doublespace}
+  \noindent\allcaps{#1}\\% epigraph
+  \noindent\allcaps{#2}% author
+  \end{doublespace}
+  \end{fullwidth}
+}
+\renewcommand{\bibsection}{}
+
+\title{Notes on Space \\Plasma Physics}
+\author{Will Barnes}
+
+% Generates the index
+\usepackage{makeidx}
+\makeindex
+
+\begin{document}
+\maketitle
+%\frontmatter
+%\blankpage
+%\newpage\thispagestyle{empty}
+\openepigraph{%
+    This set of notes is the culmination of several graduate courses in the Department of Physics and Astronomy, Rice University from the Fall of 2013 to the Spring of 2015. These notes cover a wide variety of topics related to the field of solar and space physics, specifically the study of space plasma physics. Topics covered include, but are not limited to, electricity and magnetism, statistical mechanics, basic plasma physics, plasma kinetic theory, coronal loop physics, and the physics of solar flares. Many thanks to Anthony Chan and Stephen Bradshaw for providing many detailed sets of notes over the course of several courses.
+}{}
+\tableofcontents
+\listoffigures
+\listoftables
+
+\include{chapters/ch_em}
+%%
+\input{chapters/ch_numerical_methods}
+%%
+\include{chapters/ch_plasma_physics}
+%%
+%\include{ch_stat_mech}
+%%
+%\include{ch_solar}
+%%%bibliography
+\chapter{References}
+\bibliographystyle{aasjournal}
+\bibliography{references}
+\end{document}

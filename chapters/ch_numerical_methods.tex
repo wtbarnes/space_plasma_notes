@@ -1,0 +1,77 @@
+\chapter{Basic Numerical Methods}
+
+\section{Roundoff and Truncation Errors}
+
+\newthought{Floating point numbers} can be represented using either single- (32 bits) or double-precision (64 bits). Single-precision usually stores out to six or seven decimal places while double-precision can usually store up to 16 decimal places. The main pitfall of roundoff error is when two numbers are treated as being equal when the user has not intended for this to be the case. For example, say $\epsilon$ is the smallest number in single-precision that we can store and $\xi<\epsilon$. If for two single-precision floating point numbers $a,b>\epsilon$ we attempt to perform the operation
+\begin{equation}
+	\frac{b}{(a+\xi)-a},
+\end{equation}
+we will have some serious problems as our computer will treat $a+\xi$ as $a$, resulting in $0$ in the denominator. Using double-precision often helps to alleviate these problems. Roundoff error depends on the hardware (and probably software) we are using. Thus, it can be persistent across many different parts of the program we are writing.
+
+Truncation error, unlike roundoff error, is generally \textit{not} dependent on our choice of hardware, but rather on our choice of method (i.e. Euler, Runge-Kutta, etc.). Consider the Taylor series
+\begin{equation}
+	f(x+h) = f(x) + hf^{\prime}(x) + \frac{1}{2}h^2f^{\prime\prime}(x) + \ldots
+\end{equation}
+This can be rearranged to solve for the derivative of $f$,
+\begin{equation}
+	f^{\prime}(x)=\frac{f(x+h)-f(x)}{h} + \mathcal{O}(h),
+	\label{eq:right_deriv}
+\end{equation}
+where $\mathcal{O}(h)$ represents the truncation error of order $h$. How is this applied in numerical integration? Consider the example of projectile motion. Our equations of motion can be written as
+\begin{align}
+	\frac{\mathrm{d}\mathbf{v}}{\mathrm{d}t} &= \mathbf{a}(\mathbf{r},\mathbf{v}), \\[0.5em]
+	\frac{\mathrm{d}\mathbf{r}}{\mathrm{d}t} &= \mathbf{v},
+\end{align}
+where $\mathbf{a}$ is the acceleration. Let's rewrite these equations of motion in terms of Eq. \ref{eq:right_deriv},
+\begin{align}
+	\frac{\mathbf{v}(t+\tau) - \mathbf{v}(t)}{\tau} + \mathcal{O}(\tau) &= \mathbf{a}(\mathbf{r}(t),\mathbf{v}(t)) \\[0.5em]
+	\frac{\mathbf{r}(t+\tau) - \mathbf{r}(t)}{\tau} + \mathcal{O}(\tau) &= \mathbf{v}(t)
+\end{align}
+and then solving for the updated values of $\mathbf{v}$ and $\mathbf{r}$,
+\begin{align}
+	\mathbf{v}(t+\tau) &= \mathbf{v}(t) + \tau\mathbf{a}(\mathbf{r}(t),\mathbf{v}(t)) + \mathcal{O}(\tau^2), \\[0.5em]
+	\mathbf{r}(t+\tau) &= \mathbf{r}(t) + \tau\mathbf{v}(t) + \mathcal{O}(\tau^2).
+\end{align}
+Thus, the truncation error for an Euler scheme is quadratic in $\tau$, the timestep. However, we should be careful to draw the distinction between \textit{local} and \textit{global} truncation error. The global error is the sum of all the local truncation errors made at each iteration and is highly dependent on our choice of scheme. Consider a projectile motion problem on $t\in(0,T)$ solved using the Euler method such that the number of steps is $N_{\tau}=T/\tau$. The global error is thus expressed as 
+\begin{equation}
+	\varepsilon_{G}\propto N_{\tau}\times \varepsilon_L.
+\end{equation}
+In the Euler method case, $\varepsilon\propto T/\tau\times\mathcal{O}(\tau^2)=\mathcal{O}(\tau)$. Thus, the global truncation error of the Euler scheme is $\mathcal{O}(\tau)$.
+
+\section{Curve Fitting and Interpolation}
+
+\newthought{Suppose we have $N$ data points} $(x_i,y_i)$ and we want to fit them to a curve $Y(x;\{a_j\})$ where $\{a_j\}$ is a set of $M$ adjustable parameters. If each point $y_i$ has an associated error $\sigma_i$, the fit parameters can be determined by minimizing the $\chi^2$-function
+\begin{equation}
+	\label{eq:chi_squared}
+	\chi^2(\{a_j\})=\sum^{N}_{i=1}\left(\frac{\Delta_i}{\sigma_i}\right)= \sum^{N}_{i=1}\frac{[Y(x_i;\{a_j\}) - y_i]^2}{\sigma_i^2}.
+\end{equation}
+The set of parameters $\{a_j\}$ are determined by finding all $a_j$ which satisfy $\partial\chi^2/\partial a_j=0$. Now, say we want to fit $N$ data points to a function of the form
+\begin{equation}
+	\label{eq:gen_func_lsq}
+	Y(x;\{a_j\}) = \sum_{j=1}^Ma_jY_j(x).
+\end{equation}
+To find $\{a_j\}$, we compute $\partial \chi^2/\partial a_j=0$ which for Eq. \ref{eq:gen_func_lsq} can be expressed as
+\begin{align}
+	\sum^N_{i=1}\frac{1}{\sigma_i^2}Y_j(x_i)\left(\sum_{k=1}^Ma_kY_k(x_i) - y_i\right) = 0 \\[0.5em]
+	\sum^N_{i=1}\sum^M_{k=1}\frac{Y_jYk}{\sigma_i^2} = \sum^N_{i=1}\frac{Y_jy_i}{\sigma_i^2},
+\end{align}
+for $j=1,\ldots,M$. We can rewrite this equation as 
+\begin{equation}
+	\sum^N_{i=1}\sum^M_{k=1}A_{ij}A_{ik}a_k = \sum^N_{i=1}A_{ij}\frac{y_i}{\sigma_i},
+\end{equation}
+where $A_{ij}=Y_j(x_i)/\sigma_i$ are the matrix elements of the so-called design matrix. In matrix form, this can be expressed as 
+\begin{equation}
+	(\mathbf{A}^T\mathbf{A})\mathbf{a} = \mathbf{A}^T\mathbf{b},
+\end{equation}
+where $b_i=y_i/\sigma_i$. This can be easily inverted to solve for $\mathbf{a}$. The estimated errors for $a_j$ can be calculated using the equation
+\begin{equation}
+	\sigma_{a_j} = \sqrt{C_{jj}},
+\end{equation}
+where $\mathbf{C} = (\mathbf{A}^T\mathbf{A})^{-1}$ \cite{garcia_numerical_2000}. How does one evaluate whether the curve $Y$ is a good fit to the data $y$? On average, we can say that the difference between the data and the fit should be roughly equal to the error bar such that $\sigma_i\approx|y_i - Y(x_i)|$. Plugging this into Eq. \ref{eq:chi_squared} then gives that $\chi^2\approx N$. However, recalling that we have $M$ degrees of freedom, our condition should be revised such that $\chi^2\approx N-M$ implies an adequate fit. $\chi^2\gg N-M$ suggests that a poor choice of $Y$ or very small $\sigma_i$ and $\chi^2\ll N-M$ implies either overfitting or that the error bars may be too large \cite{garcia_numerical_2000}. 
+%
+\par \hl{Still need something about interpolation}
+
+\section{Numerical Integration}
+\section{Basic Linear Algebra: Analytical and Numerical}
+\section{Ordinary Differential Equations: Analytical and Numerical}
+\section{Partial Differential Equations: Analytical and Numerical}

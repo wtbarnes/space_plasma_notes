@@ -1,0 +1,59 @@
+		\item{\bf Thermodynamics and Statistical Mechanics}\\
+		\hl{Review at least one derivation of ideal gas law, equipartion theorem, Maxwellian/Boltzmann distribution, laws of thermodynamics, basic thermodynamic rules.}
+		\begin{enumerate}
+			%%
+			\item{Laws of Thermodynamics}
+			\begin{itemize}
+				\item{Zeroth Law}
+				\par If system $A$ is in equilibrium with system $B$ and system $C$ is also in equilibrium with system $B$, then system $A$ is in equilibrium with system $C$.
+				\item{First Law}
+				\par The total change in the energy of the system can be expressed as,
+				\begin{equation}
+					\mathrm{d}E = T\mathrm{d}S - p\mathrm{d}V + \sum_i\mu_i\mathrm{d}N_i.
+				\end{equation}
+				\item{Second Law}
+				\item{Third Law}
+			\end{itemize}
+			%
+			\item{Adiabatic Processes}
+			\par An adiabatic process in thermodynamics is a reversible process where no heat is added to (or removed from) the gas system by its surroundings, the system evolves \textit{slowly} enough that it evolves through a sequence of states in thermal equilibrium, and the pressure and volume satisfy $pV^{\gamma}=\text{constant}$. 
+			\par In the context of MHD (or hydrodynamics), we say that each fluid element is \textit{always} in local thermal equilibrium. This is consistent with the assumption of long times scales for the MHD (fluid) equations (i.e. long compared to the collisional/thermalization time scales in this case.)
+			%
+			\item{Equipartition Theorem}
+			\par The equipartition theorem states that at temperature $T$, the average energy of any quadratic degree of freedom is $(1/2)k_BT$. Note that the equipartition theorem applies to only those systems whose energy is in the form of quadratic degrees of freedom of the form $E(q) = cq^2$, where $c$ is some constant and $q$ is the degree of freedom (e.g. $x,p_y,L_z$ etc.).
+			%
+			\item{Boltzmann Distribution}
+			\par Recall that the entropy can be expressed as $S=k_B\ln{\Omega}$, where $\Omega$ is the multiplicity. This just states that the entropy increases with the multiplicity of the system, or the number of possible accessible microstates. We regard each microstate as equally probable. Thus, the probability of being in a particular state $s^{'}$ is proportional to the multiplicity of $s^{'}$. We can write the ratio of probabilities of being in states $s_2$ and $s_1$ as
+			\begin{equation}
+				\frac{P(s_1)}{P(s_2)} = \frac{\Omega(s_2)}{\Omega(s_1)}.
+			\end{equation}
+			We can then write this ratio in terms of the entropy,
+			\begin{equation}
+				\frac{P(s_1)}{P(s_2)} = \exp{\left(\frac{S(s_2) - S(s_1)}{k_B}\right)}.
+			\end{equation}
+			Recalling the first law, we can write the change in entropy as, letting $\mathrm{d}N\to0$ and neglecting $p\mathrm{d}V$ as small compared to $\mathrm{d}E$, $\mathrm{d}S=\mathrm{d}E/T$. Plugging this into our above expression,
+			\begin{equation}
+				\frac{P(s_1)}{P(s_2)} = \exp{\left(-\frac{E(s_2) - E(s_1)}{k_BT}\right)},
+			\end{equation}
+			where the negative sign comes from the fact that the change in the reservoir energy is equal and opposite of that to the change in the energy of the single atom system. We call these exponential terms Boltzmann factors,
+			\begin{equation}
+				\text{Boltzmann factor} = \exp{\left(-\frac{E(s)}{k_BT}\right)}.
+			\end{equation}
+			Separating factors of $s_1,s_2$, it can be seen that the LHS and RHS are independent, meaning they can be set equal to a constant which we will call $Z$. Thus, the probability of state $s$ can be written as 
+			\begin{equation}
+				P(s) = \frac{1}{Z}\exp{(-E(s)/k_BT)}.
+			\end{equation}
+			Using the fact that $\sum_sP(s)=1$, we can determine $Z$ such that
+			\begin{equation}
+				P(s) = \frac{\exp{(-E(s)/k_BT)}}{\sum_s\exp{(-E(s)/k_BT)}}.
+			\end{equation}
+			This is the so-called Boltzmann distribution, or canonical distribution.
+			%
+			\item{Maxwellian}
+			\par Using Boltzmann factors, we can express the velocity distribution in thermal equilibrium as
+			\begin{equation}
+				f_M(v) = (\frac{m}{2\pi k_BT})^{3/2}4\pi v^2\exp{(-mv^2/2k_BT)}.
+			\end{equation}
+			This distribution goes to zero as $v\to0$ and $V\to\infty$. It peaks at the thermal velocity, $v_T=\sqrt{2k_BT/m}$.
+			%%
+		\end{enumerate}
