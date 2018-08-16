@@ -2,7 +2,7 @@
 
 \begin{figure}
 \centering
-\includegraphics[width=0.7\textwidth]{figures/nT_diagram.eps}
+\includegraphics[width=\columnwidth]{figures/nT_diagram.eps}
 \caption{Phase space diagram for range of density and temperatures with typical plasmas labeled. Plasma is classical (i.e. not quantum) if the average interparticle spacing is much greater than the de Broglie wavelength, $n^{-1/3}\gg h/p$. Alternatively and equivalently, the plasma is classical if the thermal energy is much greater than the Fermi energy, $k_BT\gg E_F=\hbar^2/(3\pi^2n)^{2/3}/(2m_e)$. Weakly-coupled means the average Coulomb interaction energy between two particles is much less than the average kinetic energy, $e^2/n^{-1/3}\ll k_BT$ (classical), $e^2/n^{-1/3}\ll E_F$ (quantum). Similarly, the plasma is non-relativistic provided $T\ll mc^2$ (classical), $E_F\ll mc^2$ (quantum). }
 \end{figure}
 
@@ -14,12 +14,12 @@
 \section{Plasma Characteristics}
 
 	\subsection{Plasma frequency}
-	\begin{figure}
+	\begin{marginfigure}
 		\centering
-		\includegraphics[width=0.4\textwidth]{figures/plasma_frequency.jpeg}
+		\includegraphics[width=\columnwidth]{figures/plasma_frequency.jpeg}
 		\caption{Illustration of displaced electrons in uniform block of plasma of width $w$, depth $d$, and height $h$ displaced by an amount $\delta\ll w$.}
 		\label{fig:plasma_freq}
-	\end{figure}
+	\end{marginfigure}
 	Consider the setup in Fig. \ref{fig:plasma_freq}. The block of plasma is quasi-neutral such that $n_e=n_i=n$. The electrons are displaced to the right by $\delta$ such that a slab of positive charge builds up on the left and negative charge on the right. We know that the force on the displaced block is $F=Ma=Q_{tot}E$, where $Q_{tot}=(-e)n(whd)$ and $M=m_en(whd)$. From the integral form of Gauss's law, $\oint\mathrm{d}\vec{S}\cdot\vec{E}=Q_{enc}/\epsilon_0$, we can calculate the electric field due to the $(+)$ slab as $E(dh)=(en(\delta dh))/\epsilon_0~\rightarrow~E=en\delta/\epsilon_0$. Plugging all of this into the equation of motion and noting that $a=\ddot{\delta}$, we get
 	\begin{equation}
 		\ddot{\delta} + \frac{ne^2}{m_e\epsilon_0}\delta = 0.
@@ -51,12 +51,12 @@
 	where $p_0$ is the distance of closest approach, $n_0^{-1/3}$ is the average interparticle spacing, $\lambda_D$ is the Debye length, and $\lambda_L$ is the mean free path. This is consistent with our previous discussion as we see that when $\Lambda\gg1$, the interparticle spacing is much smaller than the Debye length.
 
 	\subsection{Coulomb collision frequencies}
-	\begin{figure}
+	\begin{marginfigure}
 		\centering
-		\includegraphics[width=0.6\textwidth]{figures/collisions.png}
+		\includegraphics[width=\columnwidth]{figures/collisions.png}
 		\caption{Collisional cross-section for an incoming test particle of charge $q$ and target particle $q_0$. $p$ is the impact parameter and $v_0$ is the velocity in the horizontal direction.}
 		\label{fig:collisions}
-	\end{figure}
+	\end{marginfigure}
 
 	Consider an incoming particle with charge $q$ and speed $v_0$ incident on a target $q_0$. When the KE of the test particle is equal to the elecstrostatic potential between $q$ and $q_0$, the test particle will no longer be able to approach the target any closer. In other words, $(1/2)mv_0^2=qq_0/p_0~\rightarrow~p_0=2qq_0/mv_0^2$, where $p_0$ is the distance of closest approach.
 
@@ -115,7 +115,7 @@
 	\begin{enumerate}
 
 		\item{GC Drift due to Non-magnetic Forces} 
-		Consider the configuration shown in Fig. \ref{fig:gyroradius} such that the particle position is $\mathbf{x}=\mathbf{X}+\mathbf{\rho}$ where $\mathbf{\rho}\equiv(1/\omega_c)\hat{\mathbf{b}}\times\mathbf{v}$ where $\hat{\mathbf{b}}\equiv\mathbf{B}/B$ is the gyroradius vector and $\mathbf{X}$ is the guiding center. Consider the equation of motion $m\dot{\mathbf{v}} = q\mathbf{v}\times\mathbf{B}+\mathbf{F}$, where $\mathbf{F}$ is some static, uniform force.
+		Consider the configuration shown in Fig. \ref{fig:gyroradius} such that the particle position is $\mathbf{x}=\mathbf{X}+\rho$ where $\rho\equiv(1/\omega_c)\hat{\mathbf{b}}\times\mathbf{v}$ where $\hat{\mathbf{b}}\equiv\mathbf{B}/B$ is the gyroradius vector and $\mathbf{X}$ is the guiding center. Consider the equation of motion $m\dot{\mathbf{v}} = q\mathbf{v}\times\mathbf{B}+\mathbf{F}$, where $\mathbf{F}$ is some static, uniform force.
 
 		Differentiating $\mathbf{X},\dot{\mathbf{X}}=\mathbf{v} - \hat{\mathbf{b}}\times\dot{\mathbf{v}}/\omega_c$ and using the EOM yields 
 		\begin{equation}
@@ -127,12 +127,12 @@
 			\mathbf{V}_d \equiv \frac{1}{qB^2}\mathbf{F}\times\mathbf{B}.
 		\end{empheq}
 		If $\mathbf{F} = q\mathbf{E}$, where $\mathbf{E}$ is the electric field, then Eq. \ref{eq:gc_drift} becomes $\mathbf{V}_d = \mathbf{E}\times\mathbf{B}/B^2$, the ``E-cross-B'' drift velocity. Note that it is independent of charge so electrons and ions drift in the same direction.
-		\begin{figure}
+		\begin{marginfigure}
 			\centering
-			\includegraphics[width=0.5\textwidth]{figures/gyroradius_schematic.jpeg}
-			\caption{Schematic showing particle position $\mathbf{x}$ in terms of the guiding center position $\mathbf{X}$ and the Larmor radius $\mathbf{\rho}$}
+			\includegraphics[width=\columnwidth]{figures/gyroradius_schematic.jpeg}
+			\caption{Schematic showing particle position $\mathbf{x}$ in terms of the guiding center position $\mathbf{X}$ and the Larmor radius $\rho$. Credit: Anthony Chan, Rice}
 			\label{fig:gyroradius}
-		\end{figure}
+		\end{marginfigure}
 
 		\item{GC Motion in a Nonuniform Magnetic Field} 
 		Consider a weakly non-uniform field such that the B-field changes very little over one cyclotron orbit. The perpendicular guiding center velocity is given by
@@ -264,11 +264,11 @@ Defining the disperson tensor as $\tensor{\mathcal{D}}=-k^2\mathbb{I} + \mathbf{
 
 	\begin{itemize}
 		\item{$\theta=0$, parallel propagation}
-		\begin{figure}
+		\begin{marginfigure}
 			\centering
-			\includegraphics[width=0.6\textwidth]{figures/cmp_dispersion.pdf}
+			\includegraphics[width=\columnwidth]{figures/cmp_dispersion.pdf}
 			\caption{Dispersion curves for R- and L-waves for parallel propagation. The dotted line at $y=x$ represents $\omega=kc$. The lower dotted lines are $\omega_{ce}$ and $\omega_{ci}$, respectively.}
-		\end{figure}
+		\end{marginfigure}
 
 		LHS of Eq. \ref{eq:aa_dr} $=0$ which implies $P(n^2 - R)(n^2 - L)=0$. We consider the three possible cases in which the numerator could be zero.
 
@@ -307,8 +307,6 @@ Defining the disperson tensor as $\tensor{\mathcal{D}}=-k^2\mathbb{I} + \mathbf{
 			Using $n=kc/\omega$ and the definition of $P$ from Eq. \ref{eq:p_mode}, the resulting dispersion relation is $\omega^2=k^2c^2 + \omega_{pe}^2$, the same dispersion relation as the ``ordinary'' transverse EM waves in a cold unmagnetized plasma. These are called ``O waves''. They are linearly polarized transverse EM waves with $\delta\mathbf{E}\parallel\mathbf{B}_0$ such that the field has no effect on the wave. 
 		\end{enumerate}
 	\end{itemize}
-
-	\subsection{More\ldots? See kinetic theory notes}
 
 \section{Magnetohydrodynamic (MHD) Description of Plasma}
 
@@ -503,23 +501,23 @@ By letting $Q_1\equiv1,~Q_2\equiv m_s\mathbf{u},~Q_3\equiv m_su^2/2$, the mass, 
 		\delta W(\vec{\xi}^{*},\vec{\xi}) \ge 0,
 	\end{empheq}
 	for all allowable $\vec{\xi}$. Expanding $\delta W$, it can be shown that the energy needed to bend magnetic field lines, compress magnetic field lines, and compress the plasma all contribute to $\delta W$ and are \textit{stabilizing} terms (i.e. $>0$). Additionally, there are two additional terms due to pressure gradients and parallel currents. These can be negative and thus destabilizing.  
-	\begin{figure}
+	\begin{marginfigure}
 		\centering
 		\subfigure[]{%
-		\includegraphics[width=0.3\textwidth]{figures/mhd_instability.pdf}
+		\includegraphics[width=\columnwidth]{figures/mhd_instability.pdf}
 		\label{fig:zPinch}
 		}
 		\subfigure[]{%
-		\includegraphics[width=0.3\textwidth]{figures/mhd_instability_sausage.pdf}
+		\includegraphics[width=\columnwidth]{figures/mhd_instability_sausage.pdf}
 		\label{fig:sausage}
 		}
 		\subfigure[]{%
-		\includegraphics[width=0.3\textwidth]{figures/mhd_instability_kink.pdf}
+		\includegraphics[width=\columnwidth]{figures/mhd_instability_kink.pdf}
 		\label{fig:kink}
 		}
-		\caption{Cylindrical column of plasma that is \ref{fig:sausage} squeezed locally and potentially subject to a sausage mode and \ref{fig:kink} a bent tube potentially subject to the kink instability.}
+		\caption{Cylindrical column of plasma that is \ref{fig:sausage} squeezed locally and potentially subject to a sausage mode and \ref{fig:kink} a bent tube potentially subject to the kink instability. Credit: Anthony Chan, Rice}
 		\label{fig:mhd_instabilities}
-	\end{figure}
+	\end{marginfigure}
 
 	To illustrate this, consider the cases in Fig. \ref{fig:mhd_instabilities}. First, in Fig. \ref{fig:zPinch} we have a cylindrical column of plasma with an axial current $J_z$ and an azimuthal magnetic field $\mathbf{B}_0$. Suppose the column is squeezed locally as Fig. \ref{fig:sausage}. Because the current through the column is uniform, the current density near the ``neck'' increases, giving a greater inward magnetic field tension. This tends to enhance the neck and the plasma can pinch off. This is called the \textit{sausage instability}.
 

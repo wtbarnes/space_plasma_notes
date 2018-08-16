@@ -6,6 +6,7 @@
 \usepackage{empheq}
 \usepackage{soul,color}
 \usepackage{subfigure}
+\usepackage{makeidx}
 
 %macros and renew commands
 \renewcommand{\bibsection}{\textbf{\refname}}
@@ -24,11 +25,10 @@
 }
 \renewcommand{\bibsection}{}
 
-\title{Notes on Space \\Plasma Physics}
+\title{Notes on Space\\Plasma Physics}
 \author{Will Barnes}
 
 % Generates the index
-\usepackage{makeidx}
 \makeindex
 
 \begin{document}
@@ -49,9 +49,9 @@
 %%
 \include{chapters/ch_plasma_physics}
 %%
-%\include{ch_stat_mech}
+\include{chapters/ch_stat_mech}
 %%
-%\include{ch_solar}
+\include{chapters/ch_solar}
 %%%bibliography
 \chapter{References}
 \bibliographystyle{aasjournal}
